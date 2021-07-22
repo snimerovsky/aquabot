@@ -13,7 +13,7 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: 'aquabot-${env.BUILD_NUMBER}.zip', fingerprint: true
+            archiveArtifacts artifacts: "aquabot-*.zip", fingerprint: true
         }
     }
 }
