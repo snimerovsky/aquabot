@@ -9,6 +9,24 @@ pipeline {
                 sh "zip -r aquabot-${env.BUILD_NUMBER}.zip node_modules dist src .env .gitignore babel.config.js package.json package-lock.json webpack.config.js"
             }
         }
+        stage('SSH transfer') {
+         script {
+          sshPublisher(
+           continueOnError: false, failOnError: true,
+           publishers: [
+            sshPublisherDesc(
+             configName: "ApiBots",
+             verbose: true,
+             transfers: [
+              sshTransfer(
+               sourceFiles: "aquabot-${env.BUILD_NUMBER}.zip",
+               removePrefix: "",
+               remoteDirectory: ""
+              )
+             ])
+           ])
+         }
+        }
     }
 
     post {
