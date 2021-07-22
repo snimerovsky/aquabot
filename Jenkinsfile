@@ -1,12 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Config git') {
-            steps {
-                git 'https://github.com/snimerovsky/aquabot.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'rm -f *.zip'
