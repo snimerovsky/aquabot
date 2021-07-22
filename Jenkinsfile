@@ -18,9 +18,9 @@ pipeline {
               sh "ssh root@188.166.101.229 rm -f /var/www/aquabot-${env.BUILD_NUMBER}.zip"
               script {
                   if (params.IS_PM2_STARTED) {
-                      sh 'ssh root@188.166.101.229 pm2 reload AquabotTest'
+                      sh 'ssh root@188.166.101.229 sudo pm2 reload AquabotTest'
                   } else {
-                      sh 'ssh root@188.166.101.229 cd /var/www/aquabot_test && pm2 start \'npm run start\' --name=AquabotTest --log-date-format "YYYY-MM-DD HH:mm"'
+                      sh 'ssh root@188.166.101.229 cd /var/www/aquabot_test && sudo pm2 start \'npm run start\' --name=AquabotTest --log-date-format "YYYY-MM-DD HH:mm"'
                   }
               }
           }
