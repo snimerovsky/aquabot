@@ -8,7 +8,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git 'https://github.com/snimerovsky/aquabot.git';
                 sh 'rm -f *.zip';
                 sh 'npm install';
                 sh 'npm run build';
