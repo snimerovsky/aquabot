@@ -16,6 +16,13 @@ pipeline {
               sh "scp aquabot-${env.BUILD_NUMBER}.zip root@188.166.101.229:/var/www/"
               sh "ssh root@188.166.101.229 unzip /var/www/aquabot-${env.BUILD_NUMBER}.zip -d /var/www/aquabot_test"
               sh "ssh root@188.166.101.229 rm -f /var/www/aquabot-${env.BUILD_NUMBER}.zip"
+              script {
+                  if (params.IS_PM2_STARTED) {
+                      sh 'ssh root@188.166.101.229 pm2 reload AquabotTest'
+                  } else {
+                      sh 'ssh root@188.166.101.229 cd /var/www/aquabot_test && pm2 start \'npm run start\' --name=AquabotTest --log-date-format "YYYY-MM-DD HH:mm"'
+                  }
+              }
           }
         }
     }
