@@ -10,4 +10,10 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'aquabot-${env.BUILD_NUMBER}.zip', fingerprint: true
+        }
+    }
 }
