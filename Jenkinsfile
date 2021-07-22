@@ -1,5 +1,8 @@
 pipeline {
-    agent any
+    agent none
+    environment {
+        VERSION = sh(returnStdout: true, script: 'git describe --tags')
+    }
     stages {
         stage('Build') {
             steps {
