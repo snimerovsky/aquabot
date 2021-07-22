@@ -1,6 +1,10 @@
 pipeline {
     agent any
     stages {
+        stage('Clone sources') {
+            git url: 'https://github.com/snimerovsky/aquabot.git'
+        }
+
         stage('Build') {
             steps {
                 sh 'rm -f *.zip'
