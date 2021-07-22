@@ -1,9 +1,12 @@
 pipeline {
     agent any
-
+    options {
+        skipDefaultCheckout(true)
+    }
     stages {
         stage('Build') {
             steps {
+                checkout scm
                 sh 'rm -f *.zip';
                 sh 'npm install';
                 sh 'npm run build';
