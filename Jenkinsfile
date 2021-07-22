@@ -1,5 +1,10 @@
 pipeline {
     agent any
+
+    environment {
+        VARIABLE_1="10"
+    }
+
     stages {
         stage('Build') {
             steps {
