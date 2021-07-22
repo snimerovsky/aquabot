@@ -13,7 +13,7 @@ pipeline {
         stage('Deploy') {
           steps {
               sh 'ssh root@188.166.101.229 rm -rf /var/www/aquabot_test'
-              sh 'scp aquabot-${env.BUILD_NUMBER}.zip root@188.166.101.229:/var/www'
+              sh 'scp -d dist root@188.166.101.229:/var/www/'
               sh 'ssh root@188.166.101.229 unzip /var/www/aquabot-${env.BUILD_NUMBER}.zip -d /var/www/aquabot_test'
               sh 'ssh root@188.166.101.229 rm -f /var/www/aquabot-${env.BUILD_NUMBER}.zip'
           }
