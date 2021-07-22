@@ -27,10 +27,4 @@ pipeline {
           }
         }
     }
-
-    post {
-        always {
-            archiveArtifacts artifacts: "aquabot-*.zip", fingerprint: true
-        }
-    }
 }
