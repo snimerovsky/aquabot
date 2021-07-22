@@ -9,23 +9,11 @@ pipeline {
                 sh "zip -r aquabot-${env.BUILD_NUMBER}.zip node_modules dist src .env .gitignore babel.config.js package.json package-lock.json webpack.config.js"
             }
         }
-        stage('SSH transfer') {
-         script {
-          sshPublisher(
-           continueOnError: false, failOnError: true,
-           publishers: [
-            sshPublisherDesc(
-             configName: "ApiBots",
-             verbose: true,
-             transfers: [
-              sshTransfer(
-               sourceFiles: "aquabot-${env.BUILD_NUMBER}.zip",
-               removePrefix: "",
-               remoteDirectory: ""
-              )
-             ])
-           ])
-         }
+
+        stage('Deploy') {
+          steps {
+              sh 'ssh root@188.166.101.229 rm -rf /var/www/aquabot_test'
+          }
         }
     }
 
