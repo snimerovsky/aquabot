@@ -9,7 +9,7 @@ import CronJob from "./cronJob";
 require('dotenv').config()
 
 const PORT = process.env.PORT;
-console.log('ports', process.env.VARIABLE_1)
+console.log('BOT_TOKEN', process.env.BOT_TOKEN)
 const app = express();
 app.server = http.createServer(app);
 
