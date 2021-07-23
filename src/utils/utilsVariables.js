@@ -3,5 +3,5 @@ export const BOT_MESSAGES_BUTTONS = {
     'yes': 'Да',
     'no': 'Нет',
     'get_my_bill': 'Узнать свой счёт',
-    'change_number': 'Изменить номер'
+    'change_number': 'Изменить номер.'
 }
